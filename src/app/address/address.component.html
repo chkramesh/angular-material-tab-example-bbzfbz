@@ -18,7 +18,7 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
           <mat-form-field>
             <mat-label>Select a country</mat-label>
-            <mat-select value="USA" formControlName="country">
+            <mat-select value="USA" (selectionChange)="countryChange($event)" formControlName="country">
               <mat-option value="" disabled selected>Please select a country</mat-option>
               <mat-option *ngFor="let contry of countries" [value]="contry.id">{{contry.name}}</mat-option>
             </mat-select>
@@ -46,14 +46,26 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
         <mat-form-field>
           <mat-label>Select a State</mat-label>
-          <mat-select value="USA" (selectionChange)="stateChange($event)" formControlName="country">
+          <mat-select (selectionChange)="stateChange($event)" formControlName="country">
             <mat-option value="">Please select a State</mat-option>
             <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
 
-        
-        </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
+        <section class="example-section">
+          <mat-checkbox class="example-margin" [formControl]="disableSelect">Disable select</mat-checkbox>
+        </section> 
+         <mat-form-field>
+            <mat-label>Choose an option</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>        
+      </div>
 
    
     </mat-card-content>

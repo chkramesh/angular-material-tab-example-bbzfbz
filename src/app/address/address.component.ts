@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -13,6 +14,7 @@ export class AddressComponent implements OnInit {
   addressForm: FormGroup;
   states: Array;
   countries: Array;
+  disableSelect = new FormControl(false);
 
  constructor(private formBuilder: FormBuilder) {
         this.countries = [{id: 'USA', name: 'United States'}, {id: 'UK', name: 'United Kingdom'}, {id: 'FR', name: 'France'}];
