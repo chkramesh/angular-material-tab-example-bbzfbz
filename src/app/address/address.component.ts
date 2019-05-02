@@ -19,14 +19,9 @@ export class AddressComponent implements OnInit {
         this.states = [{ id: "AL", name: "Alabama" }, { id: "AK", name: "Alaska" }, { id: "AZ", name: "Arizona" }, { id: "AR", name: "Arkansas" }];
     }
 
-    ngOnInit() {
-       this.initAddressForm();
-       this.onChanges();
-    }
-
     initAddressForm() {
         this.addressForm = this.formBuilder.group({
-            firstName:[''], 
+            firstName:'', 
             addressLine1: ['', Validators.required],
             addressLine2: [''],
             city: ['', Validators.required],
@@ -34,6 +29,11 @@ export class AddressComponent implements OnInit {
             postalCode: ['', Validators.required],
             country: ['', Validators.required]
         });
+    }
+
+     ngOnInit() {
+       this.initAddressForm();
+       this.onChanges();
     }
 
     // https://www.technouz.com/4725/disable-angular-reactiveform-input-based-selection/
