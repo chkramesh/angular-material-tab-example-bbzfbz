@@ -21,7 +21,7 @@ export class AddressComponent implements OnInit {
 
     initAddressForm() {
         this.addressForm = this.formBuilder.group({
-            firstName:'', 
+            firstName:[''], 
             addressLine1: ['', Validators.required],
             addressLine2: [''],
             city: ['', Validators.required],
@@ -52,7 +52,7 @@ export class AddressComponent implements OnInit {
 
       this.addressForm.get('country').valueChanges
       .subscribe(selectedCountry => {
-           console.log('onChanges selectedCountry = ' +  selectedCountry);
+          console.log('onChanges selectedCountry = ' +  selectedCountry);
           if (selectedCountry != 'USA') {
               this.addressForm.get('state').reset();
               this.addressForm.get('state').disable();
@@ -60,7 +60,15 @@ export class AddressComponent implements OnInit {
           else {
               this.addressForm.get('state').enable();
           }
-    });
-}
+     });
+   }
+
+   countryChange(event) {
+    console.log('countryChange event = ' +event);
+   } 
+
+   stateChange(event) {
+    console.log('stateChange event = ' +event);
+   } 
 
 }
