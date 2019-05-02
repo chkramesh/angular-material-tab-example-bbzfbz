@@ -46,7 +46,7 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
         <mat-form-field>
           <mat-label>Select a State</mat-label>
-          <mat-select (selectionChange)="stateChange($event)" formControlName="country">
+          <mat-select (selectionChange)="stateChange($event)" id="state" formControlName="country">
             <mat-option value="">Please select a State</mat-option>
             <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
           </mat-select>

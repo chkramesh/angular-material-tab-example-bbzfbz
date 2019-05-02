@@ -25,9 +25,11 @@ export class AddressComponent implements OnInit {
         this.addressForm = this.formBuilder.group({
             firstName:[''], 
             addressLine1: ['', Validators.required],
-            addressLine2: [''],
+            // addressLine2: [''],
+            addressLine2:[{value: '', disabled: true}],
             city: ['', Validators.required],
-            state: ['', Validators.required],
+            // state: ['', Validators.required],
+            state: [[{value: '', disabled: true}], Validators.required],
             postalCode: ['', Validators.required],
             country: ['', Validators.required]
         });
@@ -57,9 +59,14 @@ export class AddressComponent implements OnInit {
           console.log('onChanges selectedCountry = ' +  selectedCountry);
           if (selectedCountry != 'USA') {
               console.log('onChanges selectedCountry state = ' +  this.addressForm.get('state'));
+              this.addressForm.get('addressLine2').enable();
+
+              // below both options are not working for select
               this.addressForm.get('state').reset();
               this.addressForm.get('state').disable();
-              this.addressForm.get('state').disabled;
+
+              this.addressForm.controls['state'].reset();
+              this.addressForm.controls['state'].disable();
           }
           else {
               this.addressForm.get('state').enable();
