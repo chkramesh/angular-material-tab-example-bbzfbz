@@ -9,35 +9,41 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
            
           <!-- Country input field -->
-          <mat-form-field class="example-full-width" fxFlex="75%" > 
+          <mat-form-field class="example-full-width" fxFlex="25%" > 
             <input matInput placeholder="First Name" formControlName="firstName">
             <mat-hint align="end">First Name</mat-hint>
           </mat-form-field>
+         </div>  
 
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
           <mat-form-field>
-          <mat-label>Select a country</mat-label>
-          <mat-select value="USA" formControlName="country">
-            <mat-option value="" disabled selected>Please select a country</mat-option>
-            <mat-option *ngFor="let contry of countries" [value]="contry.id">{{contry.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+            <mat-label>Select a country</mat-label>
+            <mat-select value="USA" formControlName="country">
+              <mat-option value="" disabled selected>Please select a country</mat-option>
+              <mat-option *ngFor="let contry of countries" [value]="contry.id">{{contry.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+         </div>
 
-        <mat-form-field class="example-full-width" fxFlex="75%" > 
+     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
+        <mat-form-field class="example-full-width" fxFlex="20%" > 
             <input matInput placeholder="Address Line 1" formControlName="addressLine1">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" fxFlex="75%" > 
+        <mat-form-field class="example-full-width" fxFlex="20%" > 
             <input matInput placeholder="Address Line 2" formControlName="addressLine2">
         </mat-form-field>
 
-         <mat-form-field class="example-full-width" fxFlex="75%" > 
+         <mat-form-field class="example-full-width" fxFlex="15%" > 
             <input matInput placeholder="City" formControlName="city">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" fxFlex="75%" > 
-            <input matInput placeholder="Postal Code" formControlName="postalCode">
+        <mat-form-field class="example-full-width" fxFlex="15%" > 
+            <input matInput placeholder="Zip" formControlName="postalCode">
         </mat-form-field>
+      </div> 
 
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
         <mat-form-field>
           <mat-label>Select a State</mat-label>
           <mat-select value="USA" (selectionChange)="stateChange($event)" formControlName="country">
@@ -46,42 +52,6 @@
           </mat-select>
         </mat-form-field>
 
-
- <!--
-        	<div class="col-xs-12 col-md-6 form-group">
-			<label for="state">State:</label>
-			<select class="form-control" id="state" formControlName="state">
-				<option value="" disabled selected>Please select</option>
-				<option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
-			</select>
-		</div>
-
-
-		<div class="col-xs-12 col-md-6 form-group">
-			<label for="postalCode">Postal Code:</label>
-			<input type="text" class="form-control" id="postalCode" formControlName="postalCode">
-		</div>
-
-        <div class="col-xs-12 col-md-6 form-group">
-			<label for="addressLine1">Address Line 1:</label>
-			<input type="text" class="form-control" id="addressLine1" formControlName="addressLine1">
-		</div>
-
-		<div class="col-xs-12 col-md-6 form-group" *ngIf="addressForm.contains('addressLine2')">
-			<label for="addressLine2">Address Line 2:</label>
-			<input type="text" class="form-control" id="addressLine2" formControlName="addressLine2">
-		</div>
-
-		<div class="col-xs-12 col-md-6 form-group">
-			<label for="city">City:</label>
-			<input type="text" class="form-control" id="city" formControlName="city">
-		</div>
-   
-          <select class="form-control" id="country" formControlName="country">
-				<option value="" disabled selected>Please select</option>
-				<option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
-			</select>
-      -->
         
         </div>
 
@@ -90,13 +60,11 @@
 
     <!-- Form submit button enabled on if form is valid -->
     <mat-card-actions>
-
       <!--
       <button mat-button [disabled]="exampleForm.invalid">Submit</button>
-      -->
-      
+      -->      
       </mat-card-actions>
-    </form> <!-- Page form end -->
+    </form> 
   </mat-card>
   
 </div>
