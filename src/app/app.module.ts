@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
+import { HttpModule, Http } from '@angular/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,7 +17,7 @@ import { OthersComponent } from './others/others.component';
 
 import 'hammerjs';
 
-import { MatTabsModule } from '@angular/material';
+// import { MatTabsModule } from '@angular/material';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +32,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     NoopAnimationsModule,
     FormsModule,
-    MatTabsModule,
+    // MatTabsModule,
+    HttpModule, 
+    FormsModule, ReactiveFormsModule, NgxWebstorageModule.forRoot(),
+    MaterialModule, FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [
