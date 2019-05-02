@@ -54,8 +54,10 @@ export class AddressComponent implements OnInit {
       .subscribe(selectedCountry => {
           console.log('onChanges selectedCountry = ' +  selectedCountry);
           if (selectedCountry != 'USA') {
+              console.log('onChanges selectedCountry state = ' +  this.addressForm.get('state'));
               this.addressForm.get('state').reset();
               this.addressForm.get('state').disable();
+              this.addressForm.get('state').disabled;
           }
           else {
               this.addressForm.get('state').enable();
