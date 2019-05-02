@@ -61,15 +61,18 @@ export class AddressComponent implements OnInit {
               console.log('onChanges selectedCountry state = ' +  this.addressForm.get('state'));
               this.addressForm.get('addressLine2').enable();
 
+              // https://stackblitz.com/edit/angular-tdjobm?file=app%2Fapp.component.ts
+
               // below both options are not working for select
-              this.addressForm.get('state').reset();
-              this.addressForm.get('state').disable();
+              // this.addressForm.get('state').reset();
+              // this.addressForm.get('state').disable();
 
               this.addressForm.controls['state'].reset();
               this.addressForm.controls['state'].disable();
           }
           else {
-              this.addressForm.get('state').enable();
+              // this.addressForm.get('state').enable();
+              this.addressForm.controls['state'].enable();
           }
      });
    }
