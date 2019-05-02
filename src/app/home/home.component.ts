@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      name: ['', Validators.required],
+      firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      address: [{ value: 'a', disabled: true }],
+      address: [{ value: '', disabled: true }],
       street: [''],
       zip: [''],
     });
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.form.patchValue({
-      name: 'name',
+      firstName: 'First name',
       lastName: 'Last Name'
     });
 
@@ -39,21 +39,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
-
-
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-home',
-//   templateUrl: './home.component.html',
-//   styleUrls: ['./home.component.css']
-// })
-// export class HomeComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }

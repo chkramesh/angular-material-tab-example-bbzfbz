@@ -1,14 +1,13 @@
 <p> home works!</p>
-
 <hello name="{{ name }}"></hello>
 
 <div [formGroup]="form">
   <div>
     <label>Name</label>
-   <input type="text" formControlName="name">
+   <input type="text" formControlName="firstName">
   </div>
 
-    <div>
+  <div>
     <label>Last Name</label>
    <input type="text" formControlName="lastName">
   </div>
@@ -23,12 +22,14 @@
   </div>
 
    <div>
-    <label>Zip</label>
-    <input type="text" [disabled]='disableTextbox' formControlName="zip">
-
+    <label>City</label>
     <input type="text" [disabled]='disableTextbox'>
   </div>
 
+   <div>
+    <label>Zip</label>
+    <input type="text" [disabled]='disableTextbox' formControlName="zip">
+  </div>
 
 </div>
 
