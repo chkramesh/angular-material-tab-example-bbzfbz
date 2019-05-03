@@ -24,31 +24,29 @@ export class OthersComponent implements OnInit {
 
     initOtherForm() {
         this.otherForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email], this.checkValidEmail]
-            // firstName:[''], 
-            // addressLine1: ['', Validators.required],
-            // // addressLine2: [''],
-            // addressLine2:[{value: '', disabled: true}],
-            // city: ['', Validators.required],
-            // // state: ['', Validators.required],
-            // // state: [[{value: '', disabled: true}], Validators.required],
-            // state: [[{value: '', disabled: this.disable}], Validators.required],
-            // // state: [{value: '', disabled: this.disable}],
-            // postalCode: ['', Validators.required],
-            // country: ['', Validators.required],
-            // inputWorks: [''],
-            // selectNope: [{ value: '', disabled: this.disable }],
-            // // userCategory: ['employee'],
-            // userCategory: [{ value:'employee'}],
-            // institution: [null],
-            // company: [null, [Validators.required]],
-            // salary: [null, [Validators.required]],
+            email: ['', [Validators.required, Validators.email], this.checkValidEmail],
+            optionA: new FormControl(false),
+            optionB: new FormControl(false),
+            optionBExtra: new FormControl({ disabled: true, value: '' }, [Validators.required, Validators.minLength(5)])           
         });
+
     }
 
     ngOnInit() {
-       this.initOtherForm();
-       // this.onChanges();
+         this.initOtherForm();
+         // this.onChanges();
+       
+         this.optionB.valueChanges.subscribe(checked => {
+           checked ? this.optionBExtra.enable() : this.optionBExtra.disable()
+        });
+    }
+
+    get optionB() {
+      return this.otherForm.get('optionB') as FormControl;
+    }
+
+    get optionBExtra() {
+      return this.otherForm.get('optionBExtra') as FormControl;
     }
 
     checkValidEmail(control: AbstractControl) {

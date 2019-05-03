@@ -8,9 +8,16 @@
   <button type="submit" [disabled]="otherForm.invalid">SEND</button>
    <div *ngIf="otherForm.get('email').pending">
           <img src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif" width="50px" alt="">
-        </div>
-        <p>Form valid {{otherForm.valid}}</p>
-        <p>Form invalid {{otherForm.invalid}}</p> 
-        <p>Form pending {{otherForm.pending}}</p> 
+  </div>
+  <p>Form valid {{otherForm.valid}}</p>
+  <p>Form invalid {{otherForm.invalid}}</p> 
+  <p>Form pending {{otherForm.pending}}</p> 
+
+  <input type="checkbox" formControlName="optionA"> Option A
+	<input type="checkbox" formControlName="optionB"> Option B
+
+	<input formControlName="optionBExtra" placeholder="Reason" *ngIf="optionB.value">
 </form>
 
+<p>Form Value: {{ otherForm.value | json }}</p>
+<p>Form Valid: {{ otherForm.valid }}</p>
