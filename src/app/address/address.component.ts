@@ -36,13 +36,19 @@ export class AddressComponent implements OnInit {
             postalCode: ['', Validators.required],
             country: ['', Validators.required],
             inputWorks: [''],
-            selectNope: [{ value: '', disabled: this.disable }]
+            selectNope: [{ value: '', disabled: this.disable }],
+            // userCategory: ['employee'],
+            userCategory: [{ value:'employee'}],
+            institution: [null],
+            company: [null, [Validators.required]],
+            salary: [null, [Validators.required]],
         });
     }
 
      ngOnInit() {
        this.initAddressForm();
        this.onChanges();
+       this.setUserCategoryValidators();
     }
 
 // https://www.codementor.io/jimohhadi/angular-validators-with-conditional-validation-in-reactive-forms-pj5z7gsq5
@@ -103,6 +109,37 @@ export class AddressComponent implements OnInit {
           }
       });
    }
+
+   setUserCategoryValidators() {
+    const institutionControl = this.addressForm.get('institution');
+    const companyControl = this.addressForm.get('company');
+    const salaryControl = this.addressForm.get('salary');
+    const userCategoryControl = this.addressForm.get('userCategory');
+    console.log('setUserCategoryValidators salaryControl = ' +  salaryControl);
+    console.log('setUserCategoryValidators userCategoryControl = ' +  userCategoryControl);
+
+    // this.addressForm.get('userCategory').valueChanges
+    this.addressForm.get('userCategory').valueChanges
+      .subscribe(userCategory => {
+
+        console.log('setUserCategoryValidators userCategory = ' +  userCategory);
+        if (userCategory === 'student') {
+          institutionControl.setValidators([Validators.required]);
+          companyControl.setValidators(null);
+          salaryControl.setValidators(null);
+        }
+
+        if (userCategory === 'employee') {
+          institutionControl.setValidators(null);
+          companyControl.setValidators([Validators.required]);
+          salaryControl.setValidators([Validators.required]);
+        }
+
+        institutionControl.updateValueAndValidity();
+        companyControl.updateValueAndValidity();
+        salaryControl.updateValueAndValidity();
+      });
+  }
 
    countryChange(event) {
     console.log('countryChange event = ' +event);

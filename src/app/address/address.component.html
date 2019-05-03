@@ -65,7 +65,7 @@
         </mat-form-field>
       </div>
 
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
+     <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
         <section class="example-section">
           <mat-checkbox class="example-margin" [formControl]="disableSelect">Disable select</mat-checkbox>
         </section> 
@@ -78,6 +78,32 @@
             </mat-select>
           </mat-form-field>        
       </div>
+
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%"    fxLayoutAlign="left" >
+        
+
+        <mat-radio-group formControlName="userCategory" name="userCategory" fxFlex="30%" class="radioAlignment">
+          <label>Category:</label>
+          <mat-radio-button value="employee" class="example-margin" >Employee</mat-radio-button>
+          <mat-radio-button value="student">Student</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field class="example-full-width" fxFlex="20%" > 
+            <input matInput placeholder="Institution" formControlName="institution">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" fxFlex="20%" > 
+            <input matInput placeholder="Company" formControlName="company">
+        </mat-form-field>
+
+         <mat-form-field class="example-full-width" fxFlex="10%" > 
+            <input matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" fxFlex="10%" > 
+            <input matInput placeholder="Salary" formControlName="salary">
+        </mat-form-field>
+      </div> 
 
    
     </mat-card-content>
