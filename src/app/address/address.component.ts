@@ -59,6 +59,8 @@ export class AddressComponent implements OnInit {
       console.log('onChanges');
       console.log('onChanges country = ' +  this.addressForm.get('country').value);
       console.log('onChanges state = ' +  this.addressForm.get('state').value);
+      const addressLine2Control = this.addressForm.get('addressLine2');
+      const stateControl = this.addressForm.controls['state'];
 
       this.addressForm.get('country').valueChanges
       .subscribe(selectedCountry => {
@@ -75,11 +77,13 @@ export class AddressComponent implements OnInit {
               // below code working
               this.addressForm.controls['state'].reset();
               this.addressForm.controls['state'].disable();
+              stateControl.setValidators(null);
           }
           else {
               this.addressForm.get('addressLine2').disable();
-              // this.addressForm.get('state').enable();
               this.addressForm.controls['state'].enable();
+              stateControl.setValidators([Validators.required]);
+              stateControl.updateValueAndValidity();
           }
       });
 
