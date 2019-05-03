@@ -35,8 +35,12 @@ export class OthersComponent implements OnInit {
     ngOnInit() {
          this.initOtherForm();
          // this.onChanges();
-       
-         this.optionB.valueChanges.subscribe(checked => {
+         this.setoptionBExtraValidators();         
+    }
+
+    // https://stackblitz.com/edit/condi-control-disabled?file=src%2Fapp%2Fapp.component.ts
+    setoptionBExtraValidators() {
+       this.optionB.valueChanges.subscribe(checked => {
            checked ? this.optionBExtra.enable() : this.optionBExtra.disable()
         });
     }
