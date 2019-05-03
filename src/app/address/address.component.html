@@ -84,8 +84,8 @@
 
         <mat-radio-group formControlName="userCategory" name="userCategory" fxFlex="30%" class="radioAlignment">
           <label>Category:</label>
-          <mat-radio-button value="employee" class="example-margin" >Employee</mat-radio-button>
-          <mat-radio-button value="student">Student</mat-radio-button>
+          <mat-radio-button value="employee" [checked]="true" class="example-margin" >Employee</mat-radio-button>
+          <mat-radio-button value="student" [checked]="false" >Student</mat-radio-button>
         </mat-radio-group>
 
         <mat-form-field class="example-full-width" fxFlex="20%" > 
