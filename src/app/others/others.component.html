@@ -1,10 +1,6 @@
 <p>others works!</p>
 <form [formGroup]="otherForm">
-  <input 
-  type="text" 
-  placeholder="Enter your email" 
-  formControlName="email"
-  />
+  <input type="text" placeholder="Enter your email"  formControlName="email" />
   <button type="submit" [disabled]="otherForm.invalid">SEND</button>
    <div *ngIf="otherForm.get('email').pending">
           <img src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif" width="50px" alt="">
