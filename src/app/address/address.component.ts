@@ -35,8 +35,8 @@ export class AddressComponent implements OnInit {
             state: [{value: '', disabled: this.disable}],
             postalCode: ['', Validators.required],
             country: ['', Validators.required],
-            works: [{ value: '', disabled: this.disable }],
-            nope: [{ value: '', disabled: this.disable }]
+            inputWorks: [''],
+            selectNope: [{ value: '', disabled: this.disable }]
         });
     }
 
