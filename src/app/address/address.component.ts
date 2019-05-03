@@ -31,8 +31,8 @@ export class AddressComponent implements OnInit {
             city: ['', Validators.required],
             // state: ['', Validators.required],
             // state: [[{value: '', disabled: true}], Validators.required],
-            // state: [[{value: '', disabled: this.disable}], Validators.required],
-            state: [{value: '', disabled: this.disable}],
+            state: [[{value: '', disabled: this.disable}], Validators.required],
+            // state: [{value: '', disabled: this.disable}],
             postalCode: ['', Validators.required],
             country: ['', Validators.required],
             inputWorks: [''],
@@ -45,6 +45,7 @@ export class AddressComponent implements OnInit {
        this.onChanges();
     }
 
+// https://www.codementor.io/jimohhadi/angular-validators-with-conditional-validation-in-reactive-forms-pj5z7gsq5
     // https://www.technouz.com/4725/disable-angular-reactiveform-input-based-selection/
     // https://stackoverflow.com/questions/51249891/mat-select-disabled-is-not-picking-up-on-the-variable-from-the-scope-in-angular5/51250091
 
@@ -62,6 +63,9 @@ export class AddressComponent implements OnInit {
       const addressLine2Control = this.addressForm.get('addressLine2');
       const stateControl = this.addressForm.controls['state'];
 
+      stateControl.setValidators(null);
+      stateControl.disable();      
+
       this.addressForm.get('country').valueChanges
       .subscribe(selectedCountry => {
           console.log('onChanges selectedCountry = ' +  selectedCountry);
@@ -76,7 +80,7 @@ export class AddressComponent implements OnInit {
 
               // below code working
               this.addressForm.controls['state'].reset();
-              this.addressForm.controls['state'].disable();
+              stateControl.disable();
               stateControl.setValidators(null);
           }
           else {
