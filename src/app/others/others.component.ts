@@ -35,11 +35,12 @@ export class OthersComponent implements OnInit {
     ngOnInit() {
          this.initOtherForm();
          // this.onChanges();
-         this.setoptionBExtraValidators();         
+         this.setOptionBExtraValidators();         
     }
-
+    
+    // https://itnext.io/valid-and-invalid-in-angular-forms-61cfa3f2a0cd
     // https://stackblitz.com/edit/condi-control-disabled?file=src%2Fapp%2Fapp.component.ts
-    setoptionBExtraValidators() {
+    setOptionBExtraValidators() {
        this.optionB.valueChanges.subscribe(checked => {
            checked ? this.optionBExtra.enable() : this.optionBExtra.disable()
         });
