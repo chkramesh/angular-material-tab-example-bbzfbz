@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -24,30 +24,41 @@ export class OthersComponent implements OnInit {
 
     initOtherForm() {
         this.otherForm = this.formBuilder.group({
-            firstName:[''], 
-            addressLine1: ['', Validators.required],
-            // addressLine2: [''],
-            addressLine2:[{value: '', disabled: true}],
-            city: ['', Validators.required],
-            // state: ['', Validators.required],
-            // state: [[{value: '', disabled: true}], Validators.required],
-            state: [[{value: '', disabled: this.disable}], Validators.required],
-            // state: [{value: '', disabled: this.disable}],
-            postalCode: ['', Validators.required],
-            country: ['', Validators.required],
-            inputWorks: [''],
-            selectNope: [{ value: '', disabled: this.disable }],
-            // userCategory: ['employee'],
-            userCategory: [{ value:'employee'}],
-            institution: [null],
-            company: [null, [Validators.required]],
-            salary: [null, [Validators.required]],
+            email: ['', [Validators.required, Validators.email], this.checkValidEmail]
+            // firstName:[''], 
+            // addressLine1: ['', Validators.required],
+            // // addressLine2: [''],
+            // addressLine2:[{value: '', disabled: true}],
+            // city: ['', Validators.required],
+            // // state: ['', Validators.required],
+            // // state: [[{value: '', disabled: true}], Validators.required],
+            // state: [[{value: '', disabled: this.disable}], Validators.required],
+            // // state: [{value: '', disabled: this.disable}],
+            // postalCode: ['', Validators.required],
+            // country: ['', Validators.required],
+            // inputWorks: [''],
+            // selectNope: [{ value: '', disabled: this.disable }],
+            // // userCategory: ['employee'],
+            // userCategory: [{ value:'employee'}],
+            // institution: [null],
+            // company: [null, [Validators.required]],
+            // salary: [null, [Validators.required]],
         });
     }
 
-     ngOnInit() {
+    ngOnInit() {
        this.initOtherForm();
-       this.onChanges();
+       // this.onChanges();
+    }
+
+    checkValidEmail(control: AbstractControl) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (control.value === 'super@secret.com') {
+              resolve({ emailIsTaken: true })
+          } else {resolve(null)}
+        }, 2000)
+      })
     }
 
     onChanges() {
