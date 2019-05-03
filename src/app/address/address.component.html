@@ -4,7 +4,8 @@
 <div class="basic-container">
   <mat-card>
     <!-- Page form start -->
-    <form [formGroup]="addressForm" novalidate (ngSubmit)="save(addressForm.value, addressForm.valid,$event)" >
+    <!-- <form [formGroup]="addressForm" novalidate (ngSubmit)="save(addressForm.value, addressForm.valid,$event)" > -->
+    <form [formGroup]="addressForm">
       <mat-card-content>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
            
@@ -44,11 +45,22 @@
       </div> 
 
       <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
-        <mat-form-field>
-          <mat-label>Select a State</mat-label>
-          <mat-select (selectionChange)="stateChange($event)" id="state" formControlName="country">
+        <mat-form-field>          
+          <mat-select placeholder="Select a Stat" (selectionChange)="stateChange($event)" id="state" formControlName="state">
             <mat-option value="">Please select a State</mat-option>
             <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="left" >
+        <mat-form-field>
+          <input matInput formControlName="works" placeholder="Input Works" />
+        </mat-form-field>        
+        <mat-form-field>
+          <mat-select placeholder="Mat-Select Does Not" formControlName="nope">
+            <mat-option value="First">First Option</mat-option>
+            <mat-option value="Second">Second Option</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

@@ -15,6 +15,7 @@ export class AddressComponent implements OnInit {
   states: Array;
   countries: Array;
   disableSelect = new FormControl(false);
+  disable: boolean = true;
 
  constructor(private formBuilder: FormBuilder) {
         this.countries = [{id: 'USA', name: 'United States'}, {id: 'UK', name: 'United Kingdom'}, {id: 'FR', name: 'France'}];
@@ -29,9 +30,13 @@ export class AddressComponent implements OnInit {
             addressLine2:[{value: '', disabled: true}],
             city: ['', Validators.required],
             // state: ['', Validators.required],
-            state: [[{value: '', disabled: true}], Validators.required],
+            // state: [[{value: '', disabled: true}], Validators.required],
+            // state: [[{value: '', disabled: this.disable}], Validators.required],
+            state: [{value: '', disabled: this.disable}],
             postalCode: ['', Validators.required],
-            country: ['', Validators.required]
+            country: ['', Validators.required],
+            works: [{ value: '', disabled: this.disable }],
+            nope: [{ value: '', disabled: this.disable }]
         });
     }
 
@@ -63,15 +68,16 @@ export class AddressComponent implements OnInit {
               this.addressForm.get('addressLine2').enable();
 
               // https://stackblitz.com/edit/angular-tdjobm?file=app%2Fapp.component.ts
-
-              // below both options are not working for select
+              // below options are not working for select
               // this.addressForm.get('state').reset();
               // this.addressForm.get('state').disable();
 
+              // below code working
               this.addressForm.controls['state'].reset();
               this.addressForm.controls['state'].disable();
           }
           else {
+              this.addressForm.get('addressLine2').disable();
               // this.addressForm.get('state').enable();
               this.addressForm.controls['state'].enable();
           }
