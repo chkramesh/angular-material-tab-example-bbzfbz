@@ -81,7 +81,19 @@ export class AddressComponent implements OnInit {
               // this.addressForm.get('state').enable();
               this.addressForm.controls['state'].enable();
           }
-     });
+      });
+
+      this.addressForm.get('inputWorks').valueChanges
+      .subscribe(inputWorksValue => {
+          if (inputWorksValue.length <= 2) {
+              // below code working
+              this.addressForm.controls['selectNope'].reset();
+              this.addressForm.controls['selectNope'].disable();
+          }
+          else {
+              this.addressForm.controls['selectNope'].enable();
+          }
+      });
    }
 
    countryChange(event) {
